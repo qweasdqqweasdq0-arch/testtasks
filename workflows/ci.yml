@@ -1,0 +1,26 @@
+name: CI Pipeline
+
+[span_14](start_span)[span_15](start_span)on: [push, pull_request] # التشغيل عند الرفع أو فتح Pull Request[span_14](end_span)[span_15](end_span)
+
+jobs:
+  build-and-test:
+    [span_16](start_span)runs-on: ubuntu-latest # التشغيل على نظام Linux افتراضي[span_16](end_span)
+    steps:
+      - [span_17](start_span)uses: actions/checkout@v4 # سحب الكود[span_17](end_span)
+
+      - name: GitLeaks Scan
+        [span_18](start_span)uses: gitleaks/gitleaks-action@v2 # فحص الأمان في Pipeline[span_18](end_span)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install pytest
+        [span_19](start_span)[span_20](start_span)run: pip install pytest # تثبيت مكتبة الاختبار[span_19](end_span)[span_20](end_span)
+
+      - name: Run Tests
+        [span_21](start_span)[span_22](start_span)run: pytest # تشغيل الاختبارات تلقائياً[span_21](end_span)[span_22](end_span)
+
+      - name: Placeholder Build Step
+        [span_23](start_span)[span_24](start_span)run: echo "Building..." # خطوة وهمية كما هو مطلوب[span_23](end_span)[span_24](end_span)
+
+      - name: Placeholder Deploy Step
+        [span_25](start_span)[span_26](start_span)[span_27](start_span)run: echo "Deploying..." # خطوة وهمية[span_25](end_span)[span_26](end_span)[span_27](end_span)
