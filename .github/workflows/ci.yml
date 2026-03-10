@@ -6,7 +6,8 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: GitLeaks Scan
         uses: gitleaks/gitleaks-action@v2
@@ -19,8 +20,5 @@ jobs:
       - name: Run Tests
         run: pytest
 
-      - name: Placeholder Build Step
-        run: echo "Building..."
-
-      - name: Placeholder Deploy Step
-        run: echo "Deploying..."
+      - name: Placeholder Step
+        run: echo "Building project..."
